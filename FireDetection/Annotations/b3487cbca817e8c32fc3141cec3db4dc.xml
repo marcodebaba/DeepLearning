@@ -1,0 +1,26 @@
+<annotation>
+	<folder>kaji_images</folder>
+	<filename>b3487cbca817e8c32fc3141cec3db4dc.jpg</filename>
+	<path>C:\Users\eartheyes\Documents\アノテーション\清水建設\渋沢カメラ画像24ｈ\20230908sibusawa\kaji_images\b3487cbca817e8c32fc3141cec3db4dc.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>920</width>
+		<height>614</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>fire</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>493</xmin>
+			<ymin>168</ymin>
+			<xmax>596</xmax>
+			<ymax>262</ymax>
+		</bndbox>
+	</object>
+</annotation>

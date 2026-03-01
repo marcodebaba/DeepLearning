@@ -1,0 +1,26 @@
+<annotation>
+	<folder>20230908_kaji_images</folder>
+	<filename>4-1.jpg</filename>
+	<path>I:\アノテーション\FPA\fpa_base_20231025\20231025_kai\20230908_kaji_images\4-1.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>640</width>
+		<height>427</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>fire</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>219</xmin>
+			<ymin>79</ymin>
+			<xmax>448</xmax>
+			<ymax>283</ymax>
+		</bndbox>
+	</object>
+</annotation>

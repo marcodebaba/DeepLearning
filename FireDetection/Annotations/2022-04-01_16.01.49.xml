@@ -1,0 +1,26 @@
+<annotation>
+	<folder>4202</folder>
+	<filename>スクリーンショット 2022-04-01 16.01.49.png</filename>
+	<path>C:\Users\ryuic\OneDrive\デスクトップ\NITE火災実験\4202\スクリーンショット 2022-04-01 16.01.49.png</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>3840</width>
+		<height>2160</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>smoke</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>1521</xmin>
+			<ymin>6</ymin>
+			<xmax>2363</xmax>
+			<ymax>1657</ymax>
+		</bndbox>
+	</object>
+</annotation>

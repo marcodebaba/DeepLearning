@@ -1,0 +1,26 @@
+<annotation>
+	<folder>n_CG2_smoke_fire_20111111_images</folder>
+	<filename>kasai3_0027.png</filename>
+	<path>I:\アノテーション\FPA\annotations\ym_20241129\ym_20241129\base\20241105-01_train-valid\n_CG2_smoke_fire_20111111_images\kasai3_0027.png</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>1920</width>
+		<height>1080</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>black_smoke</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>389</xmin>
+			<ymin>2</ymin>
+			<xmax>1362</xmax>
+			<ymax>580</ymax>
+		</bndbox>
+	</object>
+</annotation>

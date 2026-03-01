@@ -1,0 +1,26 @@
+<annotation>
+	<folder>n_CG2_smoke_fire_20111111_images</folder>
+	<filename>kasai3_0007.png</filename>
+	<path>I:\アノテーション\FPA\fpa_base_20231025\20231025_kai\n_CG2_smoke_fire_20111111_images\kasai3_0007.png</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>1920</width>
+		<height>1080</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>smoke</name>
+		<pose>Unspecified</pose>
+		<truncated>1</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>891</xmin>
+			<ymin>1</ymin>
+			<xmax>1114</xmax>
+			<ymax>185</ymax>
+		</bndbox>
+	</object>
+</annotation>

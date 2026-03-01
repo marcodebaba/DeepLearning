@@ -1,0 +1,26 @@
+<annotation>
+	<folder>20241101_inet_real_images</folder>
+	<filename>20241101fpabase_kcar_1_06581.jpg</filename>
+	<path>I:\アノテーション\FPA\annotations\ym_20241129\ym_20241129\base\20241105-01_train-valid\20241101_inet_real_images\20241101fpabase_kcar_1_06581.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>1280</width>
+		<height>720</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>black_smoke</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>8</xmin>
+			<ymin>8</ymin>
+			<xmax>1216</xmax>
+			<ymax>711</ymax>
+		</bndbox>
+	</object>
+</annotation>

@@ -1,0 +1,26 @@
+<annotation>
+	<folder>20250228yamaha_base_images</folder>
+	<filename>20250228yamaha_1_03565.jpg</filename>
+	<path>I:\アノテーション\ヤマハ工場\annotations\20250228yamaha\20250228yamaha_base_images\20250228yamaha_1_03565.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>1280</width>
+		<height>720</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>sf</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>165</xmin>
+			<ymin>5</ymin>
+			<xmax>1187</xmax>
+			<ymax>709</ymax>
+		</bndbox>
+	</object>
+</annotation>

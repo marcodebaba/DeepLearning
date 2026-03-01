@@ -1,0 +1,4 @@
+train: ../FireDetection/dataset/images/train
+val: ../FireDetection/dataset/images/val
+nc: 2
+names: ['smoke', 'fire']

@@ -1,0 +1,26 @@
+<annotation>
+	<folder>20241021ooarai_suiron_images</folder>
+	<filename>20241021o_suiron_1_04001.jpg</filename>
+	<path>I:\アノテーション\張さん渡し用\20241021ooarai_suiron\20241021ooarai_suiron_images\20241021o_suiron_1_04001.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>1392</width>
+		<height>784</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>smoke</name>
+		<pose>Unspecified</pose>
+		<truncated>1</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>639</xmin>
+			<ymin>1</ymin>
+			<xmax>1249</xmax>
+			<ymax>389</ymax>
+		</bndbox>
+	</object>
+</annotation>

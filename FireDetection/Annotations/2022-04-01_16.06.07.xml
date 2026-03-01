@@ -1,0 +1,26 @@
+<annotation>
+	<folder>r_NITE_fixed_20220408_r_nitejikken_colorful_images</folder>
+	<filename>2022-04-01_16.06.07.png</filename>
+	<path>I:\アノテーション\FPA\fpa_base_20231025\20231025_kai\r_NITE_fixed_20220408_r_nitejikken_colorful_images\2022-04-01_16.06.07.png</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>3840</width>
+		<height>2160</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>fire</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>1616</xmin>
+			<ymin>1558</ymin>
+			<xmax>1663</xmax>
+			<ymax>1639</ymax>
+		</bndbox>
+	</object>
+</annotation>
