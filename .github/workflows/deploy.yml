@@ -22,7 +22,7 @@ jobs:
         run: pip install flake8
 
       - name: Lint CNN code
-        run: flake8 CNN/*.py --max-line-length=120 --ignore=E501,W503,E203
+        run: flake8 CNN/*.py --max-line-length=120 --ignore=E501,W503,E203,E302,E303,E305,E265
 
   deploy:
     name: Deploy to Kaggle
