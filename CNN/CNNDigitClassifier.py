@@ -40,6 +40,7 @@ class CNNDigitClassifier(nn.Module):
 
         # conv2池化后输出尺寸为5x5x64，全连接层1的输出维度为128
         self.fc1 = nn.Linear(n_features, 128)
+        self.dropout = nn.Dropout(0.5)
         self.fc2 = nn.Linear(128, 10)
 
     def forward(self, x):
@@ -49,6 +50,7 @@ class CNNDigitClassifier(nn.Module):
         x = F.max_pool2d(F.relu(self.conv2(x)), 2)
         x = x.view(x.size(0), -1)  # 展平
         x = F.relu(self.fc1(x))
+        x = self.dropout(x)
         x = self.fc2(x)
         return x
 
@@ -116,8 +118,10 @@ if __name__ == '__main__':
     loss_fn = nn.CrossEntropyLoss()
     optimizer = optim.Adam(model.parameters(), lr=0.001)
 
-    # 训练和测试
+    # 训练和测试（含 Early Stopping）
     history = {"train_loss": [], "val_loss": [], "train_acc": [], "val_acc": []}
+    best_val_loss = float("inf")
+    patience, patience_counter = 5, 0
 
     for epoch in range(20):
         train_loss, train_acc = train_model(model, train_loader, loss_fn, optimizer)
@@ -129,9 +133,17 @@ if __name__ == '__main__':
         print(f'Epoch {epoch + 1} | Train Loss: {train_loss:.4f} | Train Acc: {train_acc * 100:.2f}% | '
               f'Test Loss: {test_loss:.4f} | Test Acc: {test_acc * 100:.2f}%')
 
-    # 保存模型参数
-    torch.save(model.state_dict(), "mnist_cnn.pth")
-    print("模型参数已保存！")
+        if test_loss < best_val_loss:
+            best_val_loss = test_loss
+            torch.save(model.state_dict(), "mnist_cnn.pth")
+            patience_counter = 0
+        else:
+            patience_counter += 1
+            if patience_counter >= patience:
+                print(f"Early stopping at epoch {epoch + 1}, best val loss: {best_val_loss:.4f}")
+                break
+
+    print("最优模型参数已保存！")
 
     # 画出 loss 和 accuracy 曲线
     epochs = range(1, len(history["train_loss"]) + 1)
