@@ -8,6 +8,7 @@ x = [
     ]
 x = torch.tensor(x, dtype=torch.float32)
 
+# 这些就是可训练权重
 w_key = [
   [0, 0, 1],
   [1, 1, 0],

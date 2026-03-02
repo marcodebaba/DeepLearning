@@ -50,7 +50,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # 4. 实例化模型并加载参数
 model = CNNDigitClassifier().to(device)
-model.load_state_dict(torch.load("mnist_cnn.pth", map_location=device))  # 加载训练好的模型
+model.load_state_dict(torch.load("mnist_cnn.pth", map_location=device, weights_only=True))  # 加载训练好的模型
 model.eval()  # 设为评估模式
 print("MNIST 模型已加载！")
 

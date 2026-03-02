@@ -4,6 +4,7 @@ import torch.nn.functional as F
 import torch.optim as optim
 import torchvision
 import torchvision.transforms as transforms
+import matplotlib.pyplot as plt
 from PIL import Image
 from torch.utils.data import DataLoader
 
@@ -116,15 +117,43 @@ if __name__ == '__main__':
     optimizer = optim.SGD(model.parameters(), lr=0.001)
 
     # 训练和测试
+    history = {"train_loss": [], "val_loss": [], "train_acc": [], "val_acc": []}
+
     for epoch in range(10):
         train_loss, train_acc = train_model(model, train_loader, loss_fn, optimizer)
         test_loss, test_acc = evaluate_model(model, test_loader, loss_fn)
+        history["train_loss"].append(train_loss)
+        history["val_loss"].append(test_loss)
+        history["train_acc"].append(train_acc)
+        history["val_acc"].append(test_acc)
         print(f'Epoch {epoch + 1} | Train Loss: {train_loss:.4f} | Train Acc: {train_acc * 100:.2f}% | '
               f'Test Loss: {test_loss:.4f} | Test Acc: {test_acc * 100:.2f}%')
 
     # 保存模型参数
     torch.save(model.state_dict(), "mnist_cnn.pth")
     print("模型参数已保存！")
+
+    # 画出 loss 和 accuracy 曲线
+    epochs = range(1, len(history["train_loss"]) + 1)
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 4))
+
+    ax1.plot(epochs, history["train_loss"], label="Train Loss")
+    ax1.plot(epochs, history["val_loss"], label="Val Loss")
+    ax1.set_title("Loss Curve")
+    ax1.set_xlabel("Epoch")
+    ax1.set_ylabel("Loss")
+    ax1.legend()
+
+    ax2.plot(epochs, history["train_acc"], label="Train Acc")
+    ax2.plot(epochs, history["val_acc"], label="Val Acc")
+    ax2.set_title("Accuracy Curve")
+    ax2.set_xlabel("Epoch")
+    ax2.set_ylabel("Accuracy")
+    ax2.legend()
+
+    plt.tight_layout()
+    plt.savefig("training_curves.png")
+    print("训练曲线已保存至 training_curves.png")
 
     # 使用训练好的模型对自己的手写数字进行预测
     #image_path = "../mnist_images/9_19.png"

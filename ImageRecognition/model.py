@@ -84,35 +84,3 @@ class ImageClassifier(nn.Module):
         x = self.features(x)
         x = self.pool(x)
         return self.classifier(x)
-
-
-class ResNetClassifier(nn.Module):
-    """
-    基于预训练 ResNet50 的迁移学习分类器。
-
-    策略：冻结所有层，仅替换并训练最后的 fc 层。
-    输入要求：224×224 RGB 图像（ImageNet 归一化）。
-
-    Args:
-        num_classes:  输出类别数
-        dropout_rate: fc 层前的 Dropout 概率
-    """
-
-    def __init__(self, num_classes: int = 10, dropout_rate: float = 0.5):
-        super().__init__()
-
-        backbone = models.resnet50(weights=models.ResNet50_Weights.IMAGENET1K_V1)
-
-        for param in backbone.parameters():
-            param.requires_grad = False
-
-        in_features = backbone.fc.in_features  # ResNet50 = 2048
-        backbone.fc = nn.Sequential(
-            nn.Dropout(p=dropout_rate),
-            nn.Linear(in_features, num_classes),
-        )
-
-        self.model = backbone
-
-    def forward(self, x: torch.Tensor) -> torch.Tensor:
-        return self.model(x)
