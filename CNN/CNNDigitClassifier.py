@@ -114,12 +114,12 @@ if __name__ == '__main__':
 
     # 定义损失函数和优化器
     loss_fn = nn.CrossEntropyLoss()
-    optimizer = optim.SGD(model.parameters(), lr=0.001)
+    optimizer = optim.Adam(model.parameters(), lr=0.001)
 
     # 训练和测试
     history = {"train_loss": [], "val_loss": [], "train_acc": [], "val_acc": []}
 
-    for epoch in range(10):
+    for epoch in range(20):
         train_loss, train_acc = train_model(model, train_loader, loss_fn, optimizer)
         test_loss, test_acc = evaluate_model(model, test_loader, loss_fn)
         history["train_loss"].append(train_loss)
