@@ -1,17 +1,17 @@
 import sys
 import os
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))  # noqa: E402
 
-import torch
-import torch.nn as nn
-import torch.optim as optim
-import torchvision
-import torchvision.transforms as transforms
-from torch.utils.data import DataLoader
+import torch  # noqa: E402
+import torch.nn as nn  # noqa: E402
+import torch.optim as optim  # noqa: E402
+import torchvision  # noqa: E402
+import torchvision.transforms as transforms  # noqa: E402
+from torch.utils.data import DataLoader  # noqa: E402
 
-from CNNDigitClassifier import CNNDigitClassifier, train_model, evaluate_model
-from AdjustCNN import freeze_conv_layers, fine_tune, plot_curves
-from BusinessDataset import BusinessDigitDataset
+from CNNDigitClassifier import CNNDigitClassifier, train_model, evaluate_model  # noqa: E402
+from AdjustCNN import freeze_conv_layers, fine_tune, plot_curves  # noqa: E402
+from BusinessDataset import BusinessDigitDataset  # noqa: E402
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(f"使用的设备: {device}")
