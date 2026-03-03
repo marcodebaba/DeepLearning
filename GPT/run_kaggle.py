@@ -1,23 +1,30 @@
 """
 Kaggle entry point for GPT training.
 
-Steps:
-  1. Download TinyShakespeare corpus (~1 MB) from GitHub
-  2. Train a medium-scale GPT-2-like model on Kaggle GPU
-  3. Save the best checkpoint to /kaggle/working/gpt_best.pth
+Module files (config.py, model.py, etc.) are uploaded as a Kaggle Dataset
+(marcopan111/gpt-modules) and mounted at /kaggle/input/gpt-modules/.
 
-Hardware target: Kaggle T4 (16 GB VRAM)
-Estimated training time: ~20 min for 50 epochs
+Steps:
+  1. Add dataset path to sys.path so imports work
+  2. Download TinyShakespeare corpus
+  3. Train GPT-2-like model on Kaggle GPU
+  4. Save checkpoint to /kaggle/working/gpt_best.pth
 """
 
 import os
 import sys
 import urllib.request
 
-# ── Ensure sibling modules are importable ──────────────────────────────────
-sys.path.insert(0, os.path.dirname(__file__))
+# GPT module files are mounted here via dataset_sources in kernel-metadata.json
+sys.path.insert(0, "/kaggle/input/gpt-modules/")
 
-# ── Download training corpus ───────────────────────────────────────────────
+from config import GPTConfig  # noqa: E402
+from train import train  # noqa: E402
+
+# ---------------------------------------------------------------------------
+# Download training corpus
+# ---------------------------------------------------------------------------
+
 DATA_URL = (
     "https://raw.githubusercontent.com/karpathy/char-rnn/"
     "master/data/tinyshakespeare/input.txt"
@@ -26,21 +33,18 @@ DATA_PATH = "/kaggle/working/tinyshakespeare.txt"
 
 print("Downloading TinyShakespeare corpus...")
 urllib.request.urlretrieve(DATA_URL, DATA_PATH)
-print(f"Saved {os.path.getsize(DATA_PATH):,} bytes → {DATA_PATH}\n")
+print(f"Saved {os.path.getsize(DATA_PATH):,} bytes\n")
 
-# ── Training config ────────────────────────────────────────────────────────
-from config import GPTConfig
-from train import train
+# ---------------------------------------------------------------------------
+# Train
+# ---------------------------------------------------------------------------
 
-# Medium config — tuned for Kaggle T4 (16 GB VRAM)
-#   Parameters ≈ 25 M
-#   Memory usage ≈ 4–6 GB with batch_size=64
 cfg = GPTConfig(
-    vocab_size=256,         # updated from actual corpus vocab at runtime
-    context_length=256,     # tokens the model sees at once
-    d_model=512,            # embedding dimension
-    n_heads=8,              # attention heads  (512 / 8 = 64 head_dim)
-    n_layers=8,             # Transformer blocks
+    vocab_size=256,        # updated from actual corpus at runtime
+    context_length=256,
+    d_model=512,
+    n_heads=8,
+    n_layers=8,
     dropout=0.1,
     batch_size=64,
     learning_rate=3e-4,
@@ -49,5 +53,4 @@ cfg = GPTConfig(
     train_split=0.9,
 )
 
-# ── Train ──────────────────────────────────────────────────────────────────
-train(cfg, DATA_PATH)
+train(cfg, DATA_PATH, checkpoint_path="/kaggle/working/gpt_best.pth")

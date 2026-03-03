@@ -53,7 +53,7 @@ def evaluate(model: GPTModel, loader, device: torch.device) -> float:
 # Training loop
 # ---------------------------------------------------------------------------
 
-def train(cfg: GPTConfig, text_path: str) -> GPTModel:
+def train(cfg: GPTConfig, text_path: str, checkpoint_path: str | None = None) -> GPTModel:
     device = get_device()
     print(f"Device: {device}")
 
@@ -75,7 +75,8 @@ def train(cfg: GPTConfig, text_path: str) -> GPTModel:
     scheduler = optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=cfg.max_epochs)
 
     best_val_loss = float("inf")
-    checkpoint_path = os.path.join(os.path.dirname(__file__), "gpt_best.pth")
+    if checkpoint_path is None:
+        checkpoint_path = os.path.join(os.path.dirname(__file__), "gpt_best.pth")
 
     print("\n===== Training =====")
     for epoch in range(1, cfg.max_epochs + 1):

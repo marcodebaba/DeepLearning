@@ -55,6 +55,12 @@ jobs:
       - name: Install Kaggle API
         run: pip install kaggle
 
+      - name: Push GPT modules dataset to Kaggle
+        env:
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+        run: kaggle datasets version -p ./GPT -m "CI update" --dir-mode zip
+
       - name: Push GPT kernel to Kaggle
         env:
           KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
