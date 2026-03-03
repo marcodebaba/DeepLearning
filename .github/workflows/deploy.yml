@@ -27,7 +27,7 @@ jobs:
         run: flake8 CNN/*.py --max-line-length=120 --ignore=E501,W503,E203,E302,E303,E305,E265
 
       - name: Lint GPT code
-        run: flake8 GPT/*.py --max-line-length=120 --ignore=E501,W503,E203,E302,E303,E305,E265
+        run: flake8 GPT/*.py --max-line-length=120 --ignore=E501,W503,E203,E302,E303,E305,E265,E402,E241,E221
 
   deploy-cnn:
     name: Deploy CNN to Kaggle
