@@ -39,7 +39,7 @@ jobs:
         env:
           KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
           KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
-        run: kaggle datasets version -p ./GPT -m "CI update" --dir-mode zip
+        run: kaggle datasets version -p ./GPT -m "CI update"
 
       - name: Push GPT kernel to Kaggle
         env:
