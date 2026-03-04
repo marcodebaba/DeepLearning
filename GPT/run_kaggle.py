@@ -11,12 +11,17 @@ Steps:
   4. Save checkpoint to /kaggle/working/gpt_best.pth
 """
 
+import glob
 import os
 import sys
 import urllib.request
 
-# GPT module files are mounted here via dataset_sources in kernel-metadata.json
-sys.path.insert(0, "/kaggle/input/gpt-modules/")
+# Find config.py anywhere under /kaggle/input/ to handle different dataset structures
+_found = glob.glob("/kaggle/input/**/config.py", recursive=True)
+if _found:
+    sys.path.insert(0, os.path.dirname(_found[0]))
+else:
+    sys.path.insert(0, "/kaggle/input/gpt-modules/")
 
 from config import GPTConfig  # noqa: E402
 from train import train  # noqa: E402
