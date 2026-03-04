@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'GPT/**'
+      - '.github/workflows/deploy-gpt.yml'
   workflow_dispatch:
 
 jobs:
