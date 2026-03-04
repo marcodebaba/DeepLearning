@@ -48,8 +48,8 @@ cfg = GPTConfig(
     dropout=0.1,
     batch_size=64,
     learning_rate=3e-4,
-    max_epochs=50,
-    eval_interval=5,
+    max_epochs=20,
+    eval_interval=2,
     train_split=0.9,
 )
 

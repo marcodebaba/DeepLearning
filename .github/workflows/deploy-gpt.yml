@@ -1,10 +1,9 @@
-name: CI/CD to Kaggle
+name: Deploy GPT to Kaggle
 
 on:
   push:
     branches: [main]
     paths:
-      - 'CNN/**'
       - 'GPT/**'
   workflow_dispatch:
 
@@ -23,30 +22,11 @@ jobs:
       - name: Install flake8
         run: pip install flake8
 
-      - name: Lint CNN code
-        run: flake8 CNN/*.py --max-line-length=120 --ignore=E501,W503,E203,E302,E303,E305,E265
-
       - name: Lint GPT code
         run: flake8 GPT/*.py --max-line-length=120 --ignore=E501,W503,E203,E302,E303,E305,E265,E402,E241,E221
 
-  deploy-cnn:
-    name: Deploy CNN to Kaggle
-    needs: lint
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Install Kaggle API
-        run: pip install kaggle
-
-      - name: Push CNN kernel to Kaggle
-        env:
-          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
-          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
-        run: kaggle kernels push -p ./CNN
-
-  deploy-gpt:
-    name: Deploy GPT to Kaggle
+  deploy:
+    name: Deploy to Kaggle
     needs: lint
     runs-on: ubuntu-latest
     steps:
